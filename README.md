@@ -34,9 +34,6 @@ git clone https://github.com/luuzuriaga/xchange.git
 # Simplemente haz doble clic en index.html
 ```
 
-## 📸 Vista Previa
-
-![Captura de Pantalla](file:///home/luuzuriaga/.gemini/antigravity/brain/7a751d55-bdb2-4d1c-9458-3e70a0cfb88b/full_page_view_1771692183937.png)
 
 ---
 Desarrollado con ❤️ para una experiencia financiera superior.
