@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<script>
+    // Systemic language detection
+    document.documentElement.lang = navigator.language.split('-')[0] || 'es';
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-Change | Conversor de Monedas</title>
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    <link rel="apple-touch-icon" href="img/favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 3h5v5"></path>
+                        <path d="M4 20L21 3"></path>
+                        <path d="M21 16v5h-5"></path>
+                        <path d="M15 15l6 6"></path>
+                        <path d="M4 4l5 5"></path>
+                    </svg>
+                </div>
+                <h1>X-Change</h1>
+            </div>
+
+            <div class="header-actions">
+                <button class="icon-btn" title="Notificaciones">
+                    <span class="bell-icon">🔔</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <header class="content-header">
+                <h2>Conversor de Monedas</h2>
+                <p>Obtén tasas de cambio precisas y en tiempo real para más de 150 monedas globales.</p>
+            </header>
+
+            <section class="converter-card" id="converter">
+                <div class="converter-form">
+                    <div class="form-group amount-group">
+                        <label for="amount">Cantidad a convertir</label>
+                        <div class="input-wrapper">
+                            <span class="currency-symbol">$</span>
+                            <input type="number" id="amount" value="1000" min="0" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="conversion-selectors">
+                        <div class="form-group">
+                            <label for="from-currency">De</label>
+                            <div class="select-wrapper">
+                                <select id="from-currency">
+                                    <option value="USD">USD - Dólar Estadounidense</option>
+                                    <option value="EUR">EUR - Euro</option>
+                                    <option value="GBP">GBP - Libra Esterlina</option>
+                                    <!-- Options populated by JS -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <button id="swap-currencies" class="swap-btn" title="Invertir monedas">
+                            <span>⇅</span>
+                        </button>
+
+                        <div class="form-group">
+                            <label for="to-currency">A</label>
+                            <div class="select-wrapper">
+                                <select id="to-currency">
+                                    <option value="EUR">EUR - Euro</option>
+                                    <option value="USD">USD - Dólar Estadounidense</option>
+                                    <option value="GBP">GBP - Libra Esterlina</option>
+                                    <!-- Options populated by JS -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-display" id="result-display">
+                        <p class="conversion-text">1,000.00 US Dollar =</p>
+                        <div class="main-result">
+                            <span class="result-value">924.45</span>
+                            <span class="result-code">EUR</span>
+                            <span class="live-badge">TASA EN VIVO</span>
+                        </div>
+                        <p class="rate-info">1 USD = 0.92445 EUR</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="chart-section" id="chart-section">
+                <header class="section-header">
+                    <h3>Tendencia de los últimos 30 días</h3>
+                    <p id="chart-pair-text">USD / PEN</p>
+                </header>
+                <div class="chart-container" id="chart-container">
+                    <!-- Chart SVG will be injected here -->
+                    <div class="chart-loader">Cargando gráfica...</div>
+                </div>
+            </section>
+
+            <section class="history-section" id="history-section">
+                <button class="history-toggle" id="history-toggle">
+                    <div class="toggle-left">
+                        <span class="history-icon">🕒</span>
+                        <span>Historial de Conversiones</span>
+                        <span class="history-count">Últimas 10</span>
+                    </div>
+                    <span class="arrow-icon">▼</span>
+                </button>
+                <div class="history-content hidden" id="history-content">
+                    <ul id="history-list">
+                        <!-- History items populated by JS -->
+                    </ul>
+                </div>
+            </section>
+
+            <div class="extra-info">
+                <p class="last-updated">Última actualización: <span id="update-time">-</span></p>
+                <div class="extra-links">
+                    <a href="#">Graficos Históricos</a>
+                    <a href="#">Alertas de Tasas</a>
+                </div>
+            </div>
+
+            <section class="market-overview">
+                <div class="market-cards">
+                    <div class="market-card">
+                        <p class="market-pair">GBP / USD</p>
+                        <p class="market-value">1.2145 <span class="trend up">▲ 0.12%</span></p>
+                    </div>
+                    <div class="market-card">
+                        <p class="market-pair">EUR / USD</p>
+                        <p class="market-value">1.0822 <span class="trend down">▼ 0.05%</span></p>
+                    </div>
+                    <div class="market-card">
+                        <p class="market-pair">USD / JPY</p>
+                        <p class="market-value">149.88 <span class="trend up">▲ 0.24%</span></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <p>🛡️ Datos seguros en tiempo real proporcionados por FinancialAPI.org</p>
+            <p>© 2023 X-Change Fintech Inc. Todas las tasas son solo para fines informativos.</p>
+        </div>
+    </footer>
+
+
+
+    <div id="loader" class="loader-overlay hidden">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
