@@ -1,6 +1,6 @@
 # X-Change | Conversor de Monedas Moderno
 
-![X-Change Logo](img/favicon.png)
+![X-Change Logo](img/favicon.svg)
 
 X-Change es una aplicación web premium, ligera y moderna para la conversión de divisas en tiempo real. Diseñada con una estética fintech, ofrece una experiencia fluida tanto en escritorio como en dispositivos móviles.
 
