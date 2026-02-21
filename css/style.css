@@ -1,20 +1,24 @@
 :root {
-    --primary-color: #1a8a5a;
-    --primary-light: #e8f5ed;
-    --primary-hover: #146c46;
-    --bg-color: #f7f9f8;
-    --card-bg: #ffffff;
-    --text-main: #1a1a1a;
-    --text-muted: #6b7280;
-    --border-color: #e5e7eb;
-    --input-bg: #f9fafb;
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --primary-color: #10b981;
+    --primary-light: #ecfdf5;
+    --primary-hover: #059669;
+    --secondary-color: #3b82f6;
+    --bg-color: #f0fdf4;
+    --bg-gradient: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --text-main: #064e3b;
+    --text-muted: #4b5563;
+    --border-color: #d1fae5;
+    --input-bg: #ffffff;
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
     --radius-sm: 0.8rem;
     --radius-md: 1.2rem;
-    --radius-lg: 2rem;
-    --transition: all 0.3s ease;
+    --radius-lg: 2.4rem;
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -30,11 +34,13 @@ html {
 }
 
 body {
-    background-color: var(--bg-color);
+    background: var(--bg-gradient);
+    background-attachment: fixed;
     color: var(--text-main);
     line-height: 1.5;
     font-size: 1.6rem;
     -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
 }
 
 .container {
@@ -142,6 +148,134 @@ body {
     object-fit: cover;
 }
 
+/* Notifications */
+.notifications-wrapper {
+    position: relative;
+}
+
+.notif-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0.8rem;
+    height: 0.8rem;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    border: 1px solid white;
+    display: none;
+}
+
+.notif-badge.active {
+    display: block;
+}
+
+.notif-dropdown {
+    position: absolute;
+    top: calc(100% + 1.5rem);
+    right: 0;
+    width: 32rem;
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    overflow: hidden;
+    animation: fadeInDown 0.3s ease;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notif-header {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.notif-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.clear-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.notif-list {
+    max-height: 30rem;
+    overflow-y: auto;
+}
+
+.notif-item {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.notif-item:hover {
+    background: rgba(16, 185, 129, 0.05);
+}
+
+.notif-item:last-child {
+    border-bottom: none;
+}
+
+.notif-item.unread {
+    background: rgba(16, 185, 129, 0.03);
+    border-left: 3px solid var(--primary-color);
+}
+
+.notif-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+.notif-text {
+    font-size: 1.3rem;
+    color: var(--text-muted);
+}
+
+.notif-time {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.notif-footer {
+    padding: 1.2rem;
+    text-align: center;
+    background: var(--primary-light);
+}
+
+.notif-footer a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
 /* Main Content */
 main {
     padding: 6rem 0;
@@ -169,10 +303,38 @@ main {
 /* Converter Card */
 .converter-card {
     background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
     padding: 4rem;
     box-shadow: var(--shadow-lg);
     margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.converter-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .form-group label {
@@ -210,10 +372,11 @@ main {
     background: none;
     border: none;
     font-size: 3.6rem;
-    font-weight: 700;
+    font-weight: 800;
     width: 100%;
     outline: none;
     color: var(--text-main);
+    letter-spacing: -0.1rem;
 }
 
 .conversion-selectors {
@@ -315,6 +478,71 @@ main {
 .rate-info {
     font-size: 1.4rem;
     color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Share Results Section */
+.share-result {
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.share-label {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.2rem;
+    height: 4.2rem;
+    border-radius: 1rem;
+    color: white;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.share-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    filter: brightness(1.1);
+}
+
+.share-btn.x-twitter {
+    background-color: #000000;
+}
+
+.share-btn.whatsapp {
+    background-color: #25D366;
+}
+
+.share-btn.facebook {
+    background-color: #1877F2;
+}
+
+.share-btn.linkedin {
+    background-color: #0077B5;
+}
+
+.share-btn svg {
+    width: 2rem;
+    height: 2rem;
+    fill: currentColor;
 }
 
 /* History Section */

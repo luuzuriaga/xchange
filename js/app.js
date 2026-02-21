@@ -29,6 +29,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateTimeSpan = document.getElementById('update-time');
     const loader = document.getElementById('loader');
 
+    // Social Sharing
+    const shareTwitter = document.getElementById('share-twitter');
+    const shareWhatsApp = document.getElementById('share-whatsapp');
+    const shareFacebook = document.getElementById('share-facebook');
+    const shareLinkedIn = document.getElementById('share-linkedin');
+
+    // Notifications
+    const notifBtn = document.getElementById('notification-btn');
+    const notifDropdown = document.getElementById('notif-dropdown');
+    const notifBadge = document.getElementById('notif-badge');
+    const notifList = document.getElementById('notif-list');
+    const clearNotifBtn = document.getElementById('clear-notif');
+
+    let notifications = [
+        { id: 1, title: 'Tasa bajando', text: 'USD a PEN bajó un 0.5% en la última hora.', time: 'Hace 5 min', unread: true },
+        { id: 2, title: 'Mercado Abierto', text: 'Los mercados europeos han abierto con alta volatilidad.', time: 'Hace 2 horas', unread: true },
+        { id: 3, title: 'Nuevas Monedas', text: 'Ahora puedes convertir Criptomonedas (BTC, ETH).', time: 'Ayer', unread: false }
+    ];
+
     // --- Initialization ---
     async function init() {
         showLoader(true);
@@ -37,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             populateCurrencies();
             setInitialCurrencies();
             setupEventListeners();
+            initNotifications();
             renderHistory();
             performConversion(); // Initial conversion
         } catch (error) {
@@ -224,6 +244,24 @@ document.addEventListener('DOMContentLoaded', () => {
         codeSpan.textContent = to;
         textP.textContent = `${amount.toLocaleString(locale)} ${getCurrencyName(from)} =`;
         rateInfoP.textContent = `1 ${from} = ${rate.toFixed(5)} ${to}`;
+
+        // Update sharing links
+        updateSharingLinks(amount, from, to, result);
+    }
+
+    function updateSharingLinks(amount, from, to, result) {
+        const locale = navigator.language;
+        const formattedAmount = amount.toLocaleString(locale);
+        const formattedResult = result.toLocaleString(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const text = `Acabo de convertir ${formattedAmount} ${from} a ${formattedResult} ${to} en X-Change. ¡Tasa en tiempo real!`;
+        const url = window.location.href;
+        const encodedText = encodeURIComponent(text);
+        const encodedUrl = encodeURIComponent(url);
+
+        if (shareTwitter) shareTwitter.href = `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`;
+        if (shareWhatsApp) shareWhatsApp.href = `https://wa.me/?text=${encodedText}%20${encodedUrl}`;
+        if (shareFacebook) shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedText}`;
+        if (shareLinkedIn) shareLinkedIn.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
     }
 
     function addToHistory(amount, from, to, result, rate) {
@@ -301,6 +339,61 @@ document.addEventListener('DOMContentLoaded', () => {
         historyToggle.addEventListener('click', () => {
             historyContent.classList.toggle('hidden');
             historyToggle.classList.toggle('active');
+        });
+
+        // Notifications listeners
+        if (notifBtn) {
+            notifBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                notifDropdown.classList.toggle('hidden');
+                notifBadge.classList.remove('active');
+                // Mark all as read when opening
+                notifications.forEach(n => n.unread = false);
+                renderNotifications();
+            });
+        }
+
+        if (clearNotifBtn) {
+            clearNotifBtn.addEventListener('click', () => {
+                notifications = [];
+                renderNotifications();
+            });
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (notifDropdown && !notifDropdown.contains(e.target) && e.target !== notifBtn) {
+                notifDropdown.classList.add('hidden');
+            }
+        });
+    }
+
+    // --- Notifications Logic ---
+    function initNotifications() {
+        if (notifications.some(n => n.unread)) {
+            notifBadge.classList.add('active');
+        }
+        renderNotifications();
+    }
+
+    function renderNotifications() {
+        if (!notifList) return;
+        notifList.innerHTML = '';
+
+        if (notifications.length === 0) {
+            notifList.innerHTML = '<div class="notif-item"><span class="notif-text">No tienes notificaciones.</span></div>';
+            return;
+        }
+
+        notifications.forEach(n => {
+            const item = document.createElement('div');
+            item.className = `notif-item ${n.unread ? 'unread' : ''}`;
+            item.innerHTML = `
+                <span class="notif-title">${n.title}</span>
+                <span class="notif-text">${n.text}</span>
+                <span class="notif-time">${n.time}</span>
+            `;
+            notifList.appendChild(item);
         });
     }
 
