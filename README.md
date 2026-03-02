@@ -40,26 +40,3 @@ Desarrollado con ❤️ para una experiencia financiera superior.
 
 
 
-### 🤖 AI Tools
-<p align="left">
-  <!-- Icons reales disponibles -->
-  <img src="https://skillicons.dev/icons?i=github,nvidia" />
-</p>
-
-<p align="left">
-  <!-- IA sin icono en skillicons → badges pro -->
-  <img src="https://img.shields.io/badge/DeepSeek-V3-0A66C2?style=for-the-badge&logo=ai&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Grok-AI-black?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Gamma-AI-purple?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Cudek-AI-blue?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/ChatGPT-4.5-10A37F?style=for-the-badge&logo=openai&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Gemini-2.0-4285F4?style=for-the-badge&logo=google&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Flash-AI-orange?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Copilot-AI-000000?style=for-the-badge&logo=github"/>
-  <img src="https://img.shields.io/badge/Humata-AI-4CAF50?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/ChatPDF-AI-red?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Perplexity-AI-1FB6FF?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Napkin-AI-yellow?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Monica-AI-pink?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Qwen-2.5-black?style=for-the-badge"/>
-</p>
