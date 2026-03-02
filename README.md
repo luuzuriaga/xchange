@@ -37,3 +37,22 @@ git clone https://github.com/luuzuriaga/xchange.git
 
 ---
 Desarrollado con ❤️ para una experiencia financiera superior.
+
+
+## 🤖 Herramientas de IA utilizadas
+
+![DeepSeek V3](https://img.shields.io/badge/DeepSeek-V3-blue?style=for-the-badge&logo=deepseek&logoColor=white)
+![Grok](https://img.shields.io/badge/Grok-AI-black?style=for-the-badge&logo=x&logoColor=white)
+![Gamma](https://img.shields.io/badge/Gamma-AI-purple?style=for-the-badge)
+![Cudek AI](https://img.shields.io/badge/Cudek-AI-green?style=for-the-badge)
+![ChatGPT 4.5](https://img.shields.io/badge/ChatGPT-4.5-10a37f?style=for-the-badge&logo=openai&logoColor=white)
+![Gemini 2.0](https://img.shields.io/badge/Gemini-2.0-blue?style=for-the-badge&logo=google&logoColor=white)
+![Gemini Flash](https://img.shields.io/badge/Gemini-Flash-orange?style=for-the-badge&logo=google&logoColor=white)
+![Copilot](https://img.shields.io/badge/Copilot-AI-000000?style=for-the-badge&logo=githubcopilot&logoColor=white)
+![Humata](https://img.shields.io/badge/Humata-AI-6f42c1?style=for-the-badge)
+![ChatPDF](https://img.shields.io/badge/ChatPDF-AI-red?style=for-the-badge)
+![Perplexity](https://img.shields.io/badge/Perplexity-AI-1fb6ff?style=for-the-badge)
+![Napkin AI](https://img.shields.io/badge/Napkin-AI-yellow?style=for-the-badge)
+![NVIDIA](https://img.shields.io/badge/NVIDIA-AI-76b900?style=for-the-badge&logo=nvidia&logoColor=white)
+![Monica AI](https://img.shields.io/badge/Monica-AI-ff4d4f?style=for-the-badge)
+![Qwen 2.5](https://img.shields.io/badge/Qwen-2.5-blueviolet?style=for-the-badge)
